@@ -15,7 +15,7 @@ public class LionNotParameterizedTest {
     Feline feline;
 
     @Test
-    public void testDivisionDoesHaveManeThrowsException() throws Exception {
+    public void testDivisionDoesHaveManeThrowsException() {
         Exception exception = Assert.assertThrows(Exception.class, () -> new Lion("Вертолет", feline));
         Assert.assertEquals("Используйте допустимые значения пола животного - самец или самка", exception.getMessage());
     }

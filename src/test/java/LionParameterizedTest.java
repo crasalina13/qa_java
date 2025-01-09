@@ -9,13 +9,11 @@ import org.junit.runners.Parameterized;
 @RunWith(Parameterized.class)
 public class LionParameterizedTest {
 
-    private static Object feline;
     private final String sex;
     private final boolean expectedHasMane;
 
-    public LionParameterizedTest(String sex, Object feline, boolean expectedHasMane) {
+    public LionParameterizedTest(String sex, boolean expectedHasMane) {
         this.sex = sex;
-        LionParameterizedTest.feline = feline;
         this.expectedHasMane = expectedHasMane;
     }
 
@@ -23,15 +21,15 @@ public class LionParameterizedTest {
     @Parameterized.Parameters
     public static Object[][] setSexLion() {
         return new Object[][]{
-                {"Самец", feline, true},
-                {"Самка", feline, false}
+                {"Самец", true},
+                {"Самка", false}
         };
     }
 
     @Test
     public void testDoesHaveMane() throws Exception {
-        Lion lion = new Lion(sex, (Feline) feline);
+        Lion lion = new Lion(sex, new Feline());
         boolean actualHasMane = lion.doesHaveMane();
-        Assert.assertEquals(actualHasMane, expectedHasMane);
+        Assert.assertEquals("Неверное наличие гривы", expectedHasMane, actualHasMane);
     }
 }

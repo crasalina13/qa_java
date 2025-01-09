@@ -4,6 +4,7 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
+import org.mockito.Mockito;
 import org.mockito.junit.MockitoJUnitRunner;
 
 import java.util.List;
@@ -23,7 +24,8 @@ public class LionNotParameterizedTest {
     @Test
     public void testGetKittens() throws Exception {
         Lion lion = new Lion("Самец", feline);
-        int expectedCount = 0;
+        int expectedCount = 1;
+        Mockito.when(feline.getKittens()).thenReturn(expectedCount);
         int actualCount = lion.getKittens();
         Assert.assertEquals(expectedCount, actualCount);
     }
@@ -31,7 +33,8 @@ public class LionNotParameterizedTest {
     @Test
     public void testGetFood() throws Exception {
         Lion lion = new Lion("Самка", feline);
-        List<String> expectedFood = List.of();
+        List<String> expectedFood = List.of("Зебра");
+        Mockito.when(feline.getFood("Хищник")).thenReturn(expectedFood);
         List<String> actualFood = lion.getFood();
         Assert.assertEquals(expectedFood, actualFood);
     }

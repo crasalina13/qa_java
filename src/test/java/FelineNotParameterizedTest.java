@@ -11,9 +11,9 @@ public class FelineNotParameterizedTest {
     @Test
     public void testEatMeat() throws Exception {
         Feline feline = new Feline();
-        List<String> expectedFood = feline.eatMeat();
-        List<String> actualFood = Arrays.asList("Животные", "Птицы", "Рыба");
-        Assert.assertEquals(expectedFood, actualFood);
+        List<String> expectedFood = Arrays.asList("Животные", "Птицы", "Рыба");
+        List<String> actualFood = feline.eatMeat();
+        Assert.assertEquals("Получили неверное питание ", expectedFood, actualFood);
     }
 
     @Test
